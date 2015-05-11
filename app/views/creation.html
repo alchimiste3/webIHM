@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4>Création Utilisateur</h4>
+                <div ng-model="alertCreationUser" ></div>
+
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ><p>Nom : </p><input type="text" class="form-control"  placeholder="Nom" ng-model="userName"/></li>
+                        <li class="list-group-item" ><p>Prenom : </p><input type="text" class="form-control"  placeholder="Prenom" ng-model="userSurname"/></li>
+                        <li class="list-group-item" ><p>Email : </p><input type="text" class="form-control"  placeholder="Email" ng-model="userEmail"/></li>
+                        <li class="list-group-item" ><p>Site (url) : </p><input type="text" class="form-control"  placeholder="url" ng-model="userWebSite"/></li>
+                    </ul>
+
+                    <button class="btn btn-success" href="" ng-click="creationUser(userName, userSurname,userEmail,userWebSite)" ng-model="modification" style="float: right">Ajouter</button>
+
+                    <div ng-if="erreurUser == true">
+                        <h3 style="color: red">Erreur</h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <h4>Création Projet</h4>
+                <div ng-model="alertCreationUser" ></div>
+
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ><p>Titre : </p><input type="text" class="form-control"  placeholder="Titre" ng-model="projectTitle"/></li>
+                        <li class="list-group-item" ><p>Description : </p><input type="text" class="form-control"  placeholder="Description" ng-model="projectDescription"/></li>
+                        <li class="list-group-item" ><p>Année de création : </p><input type="text" class="form-control"  placeholder="Année de création" ng-model="projectYear"/></li>
+
+                    </ul>
+                    <button class="btn btn-success" href="" ng-click="creationProjet(projectTitle, projectDescription,projectYear)" ng-model="modification" style=" float: right">Ajouter</button>
+
+                    <div ng-if="erreurProject == true">
+                        <h3 style="color: red">Erreur</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,29 @@
+<div class="panel panel-default" >
+
+    <div class="panel-body">
+        <div class="panel-body">
+            <ul class="list-group row">
+                <div class="animate-switch-container"
+                     ng-switch on="selectedPane">
+                    <div class="animate-switch" ng-switch-when="user">
+                        <li class="list-group-item col-xs-12" ng-repeat="user in currentUser" style="float: left">
+
+                            <div><h5 ng-style="styletitle">{{user.name}}, {{user.surname}}</h5></div>
+
+                        </li>
+                    </div>
+
+                    <div class="animate-switch" ng-switch-when="project">
+                        <li class="list-group-item col-xs-12" ng-repeat="proj in currentProject ">
+
+                            <div><h5 ng-style="styletitle">{{proj.title}}</h5></div>
+
+
+                        </li>
+                    </div>
+                </div>
+
+            </ul>
+        </div>
+    </div>
+</div>

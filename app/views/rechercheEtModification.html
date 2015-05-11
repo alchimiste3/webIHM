@@ -1,0 +1,254 @@
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+
+        <!--<button class="btn btn-info" ng-click="selectPane('user')" >Afficher les Utilisateurs</button>-->
+
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">Rechercher un Utilisateur</div>
+            <div class="panel-body">
+                <div id="user" >
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="type in typeRechercheUser" >
+                            <div class="col-lg-15">
+                                <div class="input-group" ng-click="selectPane('user')">
+                                    <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" ng-click="chercherUser('{{type}}',m)">Rechercher</button>
+                                      </span>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                    <button class="btn btn-info" type="button" ng-click="displayAllUser()">Afficher touts les utilisateurs</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-md-6">
+
+<!--        <button class="btn btn-info" ng-click="selectPane('project')" >Afficher les projets</button>
+        <br />-->
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">Rechercher un Projet</div>
+            <div class="panel-body">
+                <div id="projet">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="type in typeRechercheProjet">
+
+                            <div class="col-lg-15">
+                                <div ng-click="selectPane('project')" class="input-group">
+                                    <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
+
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" ng-click="chercherProject('{{type}}',m)">Rechercher</button>
+                                      </span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <button class="btn btn-info" type="button" ng-click="displayAllProject()">Afficher touts les projets</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="panel panel-default" >
+
+    <div class="panel-body">
+        <div class="panel-body">
+            <ul class="list-group row">
+                <div class="animate-switch-container"
+                     ng-switch on="selectedPane">
+                    <div class="animate-switch" ng-switch-when="user">
+                        <li class="list-group-item col-xs-12" ng-repeat="user in currentUser | filter : searchedUser" style="float: left">
+
+                            <div><h5 ng-style="styletitle"><a ng-click="montrerElement('{{user.id}}')" ng-style="styleUserProjectLink" >{{user.name}}, {{user.surname}}</a></h5><button class="btn btn-danger" ng-click="cacherElement()" ng-show="openElement === '{{user.id}}'" style="float: right;">Fermer</button></div>
+                            <div ng-show="openElement === '{{user.id}}'">
+                                <br /><br />
+                                <button class="btn btn-info" ng-click="modificationSelect('{{user.id}}')" ng-model="modification" ng-hide="modification === '{{user.id}}'">Modifier</button><button class="btn btn-danger" ng-click="modificationUnSelectUser()" ng-model="modification" ng-show="modification === '{{user.id}}'" >Annuler modification</button>
+
+                                <div ng-hide="modification === '{{user.id}}'">
+                                    <br />
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><p>ID : {{user.id}}</p></li>
+                                        <li class="list-group-item"><p>Web Site : {{user.website}}</p></li>
+                                        <li class="list-group-item"><p>Email : {{user.email}}</p></li>
+
+                                    </ul>
+
+                                    <div>
+                                        <button class="btn btn-info" ng-click="rechercheProjectPourUser('{{user.id}}')">Afficher les Projets</button>
+                                        <button ng-show="roles === '{{user.id}}'" class="btn btn-danger" ng-click="fermerListRoles()" style="float: right">Fermer la liste des projets</button>
+
+
+
+
+                                        <div class="row">
+
+                                            <div class="col-xs-10 col-md-10">
+                                                <br />
+                                                <ul class="list-group" ng-show="roles === '{{user.id}}'">
+                                                    <div ng-if="RolesCurrentUser == false">
+                                                        <p>{{user.name}} {{user.surname}} n'a aucun projet en cour</p>
+                                                    </div>
+                                                    <li class="list-group-item" ng-repeat="role in RolesCurrentUser">
+
+                                                        <div ng-if="listProjectCurrentUser[$index].title != null ">
+                                                            <p>Role : {{role.name}}<br />Titre du projet : {{listProjectCurrentUser[$index].title}}</p>
+                                                            <button class="btn btn-info" type="button" ng-click="goProject('{{role.ProjectId}}')">Aller au projet</button>
+                                                        </div>
+
+                                                        <div ng-if="listProjectCurrentUser[$index].title == null  ">
+                                                            <p>Role : {{role.name}}</p><p style="color: red">Titre du projet : Ce projet n'existe plus</p>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div ng-show="modification === '{{user.id}}'">
+                                    <h4>Modification :</h4>
+
+                                    <ul class="list-group">
+                                        <li class="list-group-item" ><p>Nom : </p><input type="text" class="form-control" ng-model="user.name"/></li>
+                                        <li class="list-group-item" ><p>Prenom : </p><input type="text" class="form-control" ng-model="user.surname"/></li>
+                                        <li class="list-group-item" ><p>Email : </p><input type="text" class="form-control" ng-model="user.email"/></li>
+                                        <li class="list-group-item" ><p>Site (url) : </p><input type="text" class="form-control" ng-model="user.website"/></li>
+
+                                    </ul>
+                                    <button class="btn btn-success" ng-click="sauvModificationUser(user.id, user.name, user.surname, user.email, user.website)" ng-model="modification" style="float: right">sauvegarder</button>
+
+                                </div>
+
+                                <button class="btn btn-danger" ng-click="supprimerSelect()" style="float: right" ng-hide="modification === '{{user.id}}'">Supprimer Utilisateur</button>
+
+                                <div ng-if="supprimerSelected == true">
+                                    <br />
+                                    <h5>Vraiment ?</h5>
+                                    <button class="btn btn-danger" href="" ng-click="supprimerUser('{{user.id}}')" ng-model="modification" style="float: right">Oui</a>
+                                    <button class="btn btn-success" href="" ng-click="supprimerUnSelect()" ng-model="modification" style="float: right">Non</a>
+
+                                </div>
+
+
+
+                            </div>
+
+                        </li>
+                    </div>
+
+                    <div class="animate-switch" ng-switch-when="project">
+                        <li class="list-group-item col-xs-12" ng-repeat="proj in currentProject | filter : searchedProject">
+
+                            <div><h5 ng-style="styletitle"><a ng-click="montrerElement('{{proj.id}}')" ng-style="styleUserProjectLink">{{proj.title}}</a></h5><button class="btn btn-danger" ng-click="cacherElement()" style="float: right" ng-show="openElement === '{{proj.id}}'">Fermer</button></div>
+
+                            <div ng-show="openElement === '{{proj.id}}'" >
+                                <br /><br />
+                                <button class="btn btn-info" ng-click="modificationSelect('{{proj.id}}')" ng-model="modification" ng-hide="modification === '{{proj.id}}'">Modifier</button><button class="btn btn-danger" ng-click="modificationUnSelectProject()" ng-model="modification" ng-show="modification === '{{proj.id}}'" >Annuler modification</button>
+
+                                <br />
+                                <div ng-hide="modification === '{{proj.id}}'">
+                                    <br />
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><p>ID : {{proj.id}}</p></li>
+                                        <li class="list-group-item"><p>Description : {{proj.description}}</p></li>
+                                        <li class="list-group-item"><p>Année de création : {{proj.year}}</p></li
+                                    </ul>
+                                    <br />
+                                    <button class="btn btn-info" ng-click="rechercheUserPourProject('{{proj.id}}')">Afficher les Utilisateurs</button>
+                                    <button ng-show="roles === '{{proj.id}}'" class="btn btn-danger" ng-click="fermerListRoles()" style="float: right">Fermer la liste des utilisateurs</button>
+
+                                    <div class="row">
+
+                                        <div class="col-xs-10 col-md-10">
+                                            <br />
+                                            <ul class="list-group" ng-show="roles === '{{proj.id}}'">
+
+                                                <div ng-if="RolesCurrentProject == false">
+                                                    <p>Il n'y a pas de participants pour ce projet</p>
+                                                </div>
+                                                <li class="list-group-item" ng-repeat="role in RolesCurrentProject">
+
+                                                    <div ng-if="listUserCurrentProject[$index].name != null ">
+                                                        <p>Role : {{role.name}}<br />Nom : {{listUserCurrentProject[$index].name}}</p>
+                                                        <button class="btn btn-info" type="button" ng-click="goUser('{{role.UserId}}')">Aller a l'utilisateur</button>
+                                                    </div>
+
+                                                    <div ng-if="listUserCurrentProject[$index].name == null  ">
+                                                        <p>Role : {{role.name}}</p><p style="color: red">Nom : Cet utilisateur n'existe plus</p>
+                                                    </div>
+
+
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                                <div ng-show="modification === '{{proj.id}}'">
+
+                                    <h4>Modification</h4>
+
+                                    <div>
+                                        <ul class="list-group">
+                                            <li class="list-group-item" ><p>Titre : </p><input type="text" class="form-control"  ng-model="proj.title"></input></li>
+                                            <li class="list-group-item" ><p>Description : </p><input type="text" class="form-control" ng-model="proj.description"></input></li>
+                                            <li class="list-group-item" ><p>Année de création : </p><input type="text" class="form-control" ng-model="proj.year"></input></li>
+
+                                        </ul>
+                                        <button class="btn btn-success" href="" ng-click="sauvModificationProjet('{{proj.id}}',projectTitle, projectDescription)" ng-model="modification" style="float: right">sauvegarder</a>
+
+
+                                    </div>
+
+
+                                </div>
+
+                                <button class="btn btn-danger" ng-click="supprimerSelect()" style="float: right" ng-hide="modification === '{{user.id}}'">Supprimer Utilisateur</button>
+
+                                <div ng-if="supprimerSelected == true">
+                                    <br />
+                                    <h5>Vraiment ?</h5>
+                                    <button class="btn btn-danger" href="" ng-click="supprimerProject('{{proj.id}}')" ng-model="modification" style="float: right">Oui</a>
+                                        <button class="btn btn-success" href="" ng-click="supprimerUnSelect()" ng-model="modification" style="float: right">Non</a>
+
+                                </div>
+
+                            </div>
+
+                        </li>
+                    </div>
+                </div>
+
+            </ul>
+        </div>
+    </div>
+</div>

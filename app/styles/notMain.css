@@ -1,0 +1,70 @@
+
+body{
+  background:#F5FFFA;
+}
+
+
+.panel-body {
+  background:#F3F3F3;
+}
+
+
+.header{
+  font-family: Arial;
+  text-decoration-color: #000000;
+}
+
+.ongle {
+
+  font-family: Arial;
+  color: #000000;
+  font-size: 15px;
+
+}
+
+
+
+.panel-title{
+  font-size: 30px;
+}
+
+.liSansPuce{
+    list-style-type : none;
+}
+
+a{
+    cursor:pointer;
+    color:#6E6E6E;
+
+}
+
+a:hover{
+    cursor:pointer;
+    color:#6E6E6E;
+
+}
+
+.a_menu{
+    color:#000000;
+
+}
+
+.fermer{
+    color: red;
+    font-style: oblique;
+}
+
+.view{
+    width: 750px;
+}
+
+.panel-body .panel-title{
+    background-color: #C0D8B6;
+}
+
+li{
+}
+
+.list-group-item{
+    background-color: #DBFFF8;
+}
