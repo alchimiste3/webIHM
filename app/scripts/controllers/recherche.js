@@ -64,7 +64,7 @@ angular.module('webIHMApp')
 
             $http.get(mainUrl + 'Projects/'+idProject)
                 .success(function(data) {
-                    console.log(data.data.title);
+                    console.log(data);
                     success(data);
 
                 }

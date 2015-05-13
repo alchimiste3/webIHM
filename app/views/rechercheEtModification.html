@@ -120,6 +120,9 @@
                                                     </li>
 
                                                 </ul>
+
+                                                <button class="btn btn-info" ng-show="roles === '{{user.id}}'" ng-click="go('/nouvRole/project/{{user.id}}')">Ajouter un Projet a l'utilisateur</button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -204,6 +207,8 @@
                                                 </li>
 
                                             </ul>
+
+                                            <button class="btn btn-info" ng-show="roles === '{{proj.id}}'" ng-click="go('/nouvRole/user/{{proj.id}}')">Ajouter Utilisateur au projet</button>
                                         </div>
                                     </div>
 

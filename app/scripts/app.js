@@ -27,13 +27,17 @@ angular
                 templateUrl: '../views/creation.html',
                 controller: 'CreationCtrl'
             })
-            .when('/nouvRole', {
+            .when('/nouvRole/', {
+                templateUrl: '../views/nouvRole.html',
+                controller: 'NouvRoleCtrl'
+            })
+            .when('/nouvRole/:type/:id', {
                 templateUrl: '../views/nouvRole.html',
                 controller: 'NouvRoleCtrl'
             })
 
-            .otherwise({
-            redirectTo: '/'
-        });
+            .otherwise({redirectTo: '/'})
+
+        ;
     });
 

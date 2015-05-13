@@ -57,6 +57,24 @@ angular.module('webIHMApp')
                 .error();
         }
 
+        this.creationRole = function(name, UserId, ProjectId, success){
+            $http.post(mainUrl +'Roles/',{
+                "name":name,
+                "UserId":UserId,
+                "ProjectId":ProjectId
+
+            })
+                .success(function(data) {
+                    console.log(data);
+                    console.log(data.data);
+
+                    success();
+
+
+                })
+                .error();
+        }
+
     }]
 
 );

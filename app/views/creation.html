@@ -6,12 +6,39 @@
                 <div ng-model="alertCreationUser" ></div>
 
                 <div>
-                    <ul class="list-group">
-                        <li class="list-group-item" ><p>Nom : </p><input type="text" class="form-control"  placeholder="Nom" ng-model="userName"/></li>
-                        <li class="list-group-item" ><p>Prenom : </p><input type="text" class="form-control"  placeholder="Prenom" ng-model="userSurname"/></li>
-                        <li class="list-group-item" ><p>Email : </p><input type="text" class="form-control"  placeholder="Email" ng-model="userEmail"/></li>
-                        <li class="list-group-item" ><p>Site (url) : </p><input type="text" class="form-control"  placeholder="url" ng-model="userWebSite"/></li>
-                    </ul>
+                    <form name="myForm">
+                        <ul class="list-group">
+                            <li class="list-group-item" ><p>Nom : </p><input type="text" name="input" class="form-control"  placeholder="Nom" ng-model="userName"/></li>
+                            <li class="list-group-item" ><p>Prenom : </p><input type="text" name="input" class="form-control"  placeholder="Prenom" ng-model="userSurname"/></li>
+                            <li class="list-group-item" >
+                                <form name="myForm">
+                                    <p>Email : </p><input type="email" name="input" placeholder="Email" ng-model="userEmail" required></li>
+                                    <div >
+                                        <span ng-show="myForm.input.$error.email">
+                                            Not valid email!</span>
+                                        </span>
+                                    </div>
+                                </form>
+                            <li class="list-group-item" ><p>Site (url) : </p><input type="text" name="input" class="form-control"  placeholder="url" ng-model="userWebSite"/></li>
+                        </ul>
+
+
+                    </form>
+                    <form name="myForm" >
+                        <ul class="list-group">
+                            <li class="list-group-item" ><p>Nom : </p><input type="text" name="input" placeholder="Nom" ng-model="userName" required></li>
+                            <li class="list-group-item" ><p>Prenom : </p><input type="text" name="input" placeholder="Prenom" ng-model="userSurname" required></li>
+                            <li class="list-group-item" ><p>Email : </p><input type="email" name="input" placeholder="Email" ng-model="userEmail" required></li>
+                            <li class="list-group-item" ><p>Site (url) : </p><input type="text" name="input" placeholder="url" ng-model="userWebSite" required></li>
+                        </ul>
+
+                        <div >
+                          <span ng-show="myForm.input.$error.email">
+                            Not valid email!</span>
+                        </div>
+
+                    </form>
+
 
                     <button class="btn btn-success" href="" ng-click="creationUser(userName, userSurname,userEmail,userWebSite)" ng-model="modification" style="float: right">Ajouter</button>
 

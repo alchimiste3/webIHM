@@ -1,27 +1,96 @@
+
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h3 style="text-decoration: underline">Creation de nouveaux Roles :</h3>
+    </div>
+</div>
+
+
 <div class="panel panel-default" >
 
     <div class="panel-body">
         <div class="panel-body">
-            <ul class="list-group row">
-                <div class="animate-switch-container"
-                     ng-switch on="selectedPane">
-                    <div class="animate-switch" ng-switch-when="user">
-                        <li class="list-group-item col-xs-12" ng-repeat="user in currentUser" style="float: left">
+            <div class="animate-switch-container"
+                 ng-switch on="selectedPane">
+                <div class="animate-switch" ng-switch-when="user">
 
-                            <div><h5 ng-style="styletitle">{{user.name}}, {{user.surname}}</h5></div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Rechercher un Utilisateur</div>
+                        <div class="panel-body">
+                            <div id="user" >
+                                <ul >
+                                    <li class="liSansPuce" ng-repeat="type in typeRechercheUser" >
+                                        <div class="col-lg-15">
+                                            <div class="input-group" ng-click="selectPane('user')">
+                                                <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
+                                                  <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" ng-click="chercherUser('{{type}}',m)">Rechercher</button>
+                                                  </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </li>
+                                </ul>
 
-                        </li>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="animate-switch" ng-switch-when="project">
-                        <li class="list-group-item col-xs-12" ng-repeat="proj in currentProject ">
 
-                            <div><h5 ng-style="styletitle">{{proj.title}}</h5></div>
-
+                    <ul class="list-group row">
+                        <li class="list-group-item col-xs-12" ng-repeat="user in currentUser | filter : searchedUser" style="float: left">
+                            <div><h5 ng-style="styletitle">{{user.name}}, {{user.surname}} </h5></div>
+                            <button ng-hide="ajouterSelected === '{{user.id}}'" class="btn btn-info" ng-click="ajouterSelect('{{user.id}}')" >Ajouter</button>
+                            <div ng-show="ajouterSelected === '{{user.id}}'">
+                                <button class="btn btn-danger" ng-click="ajouterSelect('')" style="float: right">Annuler</button>
+                                <input type="text" ng-model="role" placeholder="role..."/>
+                                <button class="btn btn-info" ng-click="ajouterRole('{{user.id}}','{{param.id}}', role)">Ajouter</button>
+                            </div>
 
                         </li>
-                    </div>
+                    </ul>
                 </div>
+
+                <div class="animate-switch" ng-switch-when="project">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Rechercher un Projet</div>
+                        <div class="panel-body">
+                            <div id="projet">
+                                <ul >
+                                    <li class="liSansPuce" ng-repeat="type in typeRechercheProjet">
+
+                                        <div class="col-lg-15">
+                                            <div ng-click="selectPane('project')" class="input-group">
+                                                <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
+                                                  <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" ng-click="chercherProject('{{type}}',m)">Rechercher</button>
+                                                  </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <ul class="list-group row">
+                        <li class="list-group-item col-xs-12" ng-repeat="proj in currentProject | filter : searchedProject">
+                            <div><h5 ng-style="styletitle"> {{proj.title}} </h5></div>
+                            <button ng-hide="ajouterSelected === '{{proj.id}}'" class="btn btn-info" ng-click="ajouterSelect('{{proj.id}}')" >Ajouter</button>
+                            <div ng-show="ajouterSelected === '{{proj.id}}'">
+                                <button class="btn btn-danger" ng-click="ajouterSelect('')" style="float: right">Annuler</button>
+                                <input type="text" ng-model="role" placeholder="role..."/>
+                                <button class="btn btn-info" ng-click="ajouterRole('{{param.id}}', '{{proj.id}}', role)">Ajouter</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             </ul>
         </div>

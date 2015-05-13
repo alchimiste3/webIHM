@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('webIHMApp')
-    .controller('RechercheCtrl', ['$scope', '$http', '$routeParams', 'Modification', 'Recherche','Suppression', function ($scope, $http, $routeParams, Modification, Recherche,Suppression) {
+    .controller('RechercheCtrl', ['$scope', '$http', '$routeParams','$location', 'Modification', 'Recherche','Suppression', function ($scope, $http, $routeParams, $location, Modification, Recherche,Suppression) {
 
 
         $scope.typeRechercheUser = ['id', 'name', 'surname'];
@@ -27,6 +27,15 @@ angular.module('webIHMApp')
         $scope.RolesCurrentProject = {};
 
         $scope.supprimerSelected = false;
+
+
+
+        /////////////////////// Redirection //////////////////////////
+
+        $scope.go = function ( path ) {
+            console.log(path);
+            $location.path( path );
+        };
 
 
 ////////////////////////////// CSS ////////////////////////
@@ -177,6 +186,7 @@ angular.module('webIHMApp')
 
 
 //////////////////////////////// load /////////////////////
+
 
 
         var initUsers = function(data){
