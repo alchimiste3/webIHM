@@ -8,11 +8,11 @@
 
         <div class="panel panel-default">
 
-            <div class="panel-heading">Rechercher un Utilisateur</div>
             <div class="panel-body">
+                <h4>Rechercher un Utilisateur</h4>
                 <div id="user" >
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="type in typeRechercheUser" >
+                    <ul class="list-unstyled">
+                        <li ng-repeat="type in typeRechercheUser" >
                             <div class="col-lg-15">
                                 <div class="input-group" ng-click="selectPane('user')">
                                     <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
@@ -21,7 +21,7 @@
                                       </span>
                                 </div>
                             </div>
-
+                            <br />
                         </li>
                     </ul>
 
@@ -39,11 +39,11 @@
 
         <div class="panel panel-default">
 
-            <div class="panel-heading">Rechercher un Projet</div>
             <div class="panel-body">
+                <h4>Rechercher un Projet</h4>
                 <div id="projet">
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="type in typeRechercheProjet">
+                    <ul class="list-unstyled">
+                        <li ng-repeat="type in typeRechercheProjet">
 
                             <div class="col-lg-15">
                                 <div ng-click="selectPane('project')" class="input-group">
@@ -54,6 +54,7 @@
                                       </span>
                                 </div>
                             </div>
+                            <br />
                         </li>
                     </ul>
 
@@ -112,6 +113,17 @@
                                                         <div ng-if="listProjectCurrentUser[$index].title != null ">
                                                             <p>Role : {{role.name}}<br />Titre du projet : {{listProjectCurrentUser[$index].title}}</p>
                                                             <button class="btn btn-info" type="button" ng-click="goProject('{{role.ProjectId}}')">Aller au projet</button>
+
+                                                            <button ng-show="supprimerRoleSelected != true" class="btn btn-danger" ng-click="supprimerRoleSelect('{{role.id}}')" style="float: right" >Supprimer ce Role</button>
+
+                                                            <div ng-show="supprimerRoleSelected === '{{role.id}}'">
+                                                                <br />
+                                                                <h5>Vraiment ?</h5>
+                                                                <button class="btn btn-success" ng-click="supprimerRoleUnSelect()" ng-model="modification" >Non</button>
+                                                                <button class="btn btn-danger" ng-click="supprimerRoleUser('{{role.id}}')" ng-model="modification" >Oui</button>
+
+                                                            </div>
+
                                                         </div>
 
                                                         <div ng-if="listProjectCurrentUser[$index].title == null  ">
@@ -150,8 +162,8 @@
                                 <div ng-if="supprimerSelected == true">
                                     <br />
                                     <h5>Vraiment ?</h5>
-                                    <button class="btn btn-danger" href="" ng-click="supprimerUser('{{user.id}}')" ng-model="modification" style="float: right">Oui</a>
-                                    <button class="btn btn-success" href="" ng-click="supprimerUnSelect()" ng-model="modification" style="float: right">Non</a>
+                                    <button class="btn btn-danger" ng-click="supprimerUser('{{user.id}}')" ng-model="modification" style="float: right">Oui</button>
+                                    <button class="btn btn-success" ng-click="supprimerUnSelect()" ng-model="modification" style="float: right">Non</button>
 
                                 </div>
 
@@ -197,6 +209,17 @@
                                                     <div ng-if="listUserCurrentProject[$index].name != null ">
                                                         <p>Role : {{role.name}}<br />Nom : {{listUserCurrentProject[$index].name}}</p>
                                                         <button class="btn btn-info" type="button" ng-click="goUser('{{role.UserId}}')">Aller a l'utilisateur</button>
+
+                                                        <button ng-show="supprimerRoleSelected != true" class="btn btn-danger" ng-click="supprimerRoleSelect('{{role.id}}')" style="float: right" >Supprimer ce Role</button>
+
+                                                        <div ng-show="supprimerRoleSelected === '{{role.id}}'">
+                                                            <br />
+                                                            <h5>Vraiment ?</h5>
+                                                            <button class="btn btn-success" ng-click="supprimerRoleUnSelect()" ng-model="modification" >Non</button>
+                                                            <button class="btn btn-danger" ng-click="supprimerRoleProject('{{role.id}}')" ng-model="modification" >Oui</button>
+
+                                                        </div>
+
                                                     </div>
 
                                                     <div ng-if="listUserCurrentProject[$index].name == null  ">
@@ -242,8 +265,8 @@
                                 <div ng-if="supprimerSelected == true">
                                     <br />
                                     <h5>Vraiment ?</h5>
-                                    <button class="btn btn-danger" href="" ng-click="supprimerProject('{{proj.id}}')" ng-model="modification" style="float: right">Oui</a>
-                                        <button class="btn btn-success" href="" ng-click="supprimerUnSelect()" ng-model="modification" style="float: right">Non</a>
+                                    <button class="btn btn-danger" ng-click="supprimerProject('{{proj.id}}')" ng-model="modification" style="float: right">Oui</button>
+                                    <button class="btn btn-success" ng-click="supprimerUnSelect()" ng-model="modification" style="float: right">Non</button>
 
                                 </div>
 

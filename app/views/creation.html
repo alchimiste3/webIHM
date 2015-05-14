@@ -6,36 +6,29 @@
                 <div ng-model="alertCreationUser" ></div>
 
                 <div>
-                    <form name="myForm">
-                        <ul class="list-group">
-                            <li class="list-group-item" ><p>Nom : </p><input type="text" name="input" class="form-control"  placeholder="Nom" ng-model="userName"/></li>
-                            <li class="list-group-item" ><p>Prenom : </p><input type="text" name="input" class="form-control"  placeholder="Prenom" ng-model="userSurname"/></li>
-                            <li class="list-group-item" >
-                                <form name="myForm">
-                                    <p>Email : </p><input type="email" name="input" placeholder="Email" ng-model="userEmail" required></li>
-                                    <div >
-                                        <span ng-show="myForm.input.$error.email">
-                                            Not valid email!</span>
-                                        </span>
-                                    </div>
-                                </form>
-                            <li class="list-group-item" ><p>Site (url) : </p><input type="text" name="input" class="form-control"  placeholder="url" ng-model="userWebSite"/></li>
-                        </ul>
+                    <form name="myForm" novalidate>
 
+                        <p>Nom :<br>
+                            <input class="form-control" type="text" name="userName" ng-model="userName">
+                        </p>
 
-                    </form>
-                    <form name="myForm" >
-                        <ul class="list-group">
-                            <li class="list-group-item" ><p>Nom : </p><input type="text" name="input" placeholder="Nom" ng-model="userName" required></li>
-                            <li class="list-group-item" ><p>Prenom : </p><input type="text" name="input" placeholder="Prenom" ng-model="userSurname" required></li>
-                            <li class="list-group-item" ><p>Email : </p><input type="email" name="input" placeholder="Email" ng-model="userEmail" required></li>
-                            <li class="list-group-item" ><p>Site (url) : </p><input type="text" name="input" placeholder="url" ng-model="userWebSite" required></li>
-                        </ul>
+                        <p>Prenom :<br>
+                            <input class="form-control" type="text" name="userSurname" ng-model="userSurname">
+                        </p>
 
-                        <div >
-                          <span ng-show="myForm.input.$error.email">
-                            Not valid email!</span>
-                        </div>
+                        <p>Email :<br>
+                            <input class="form-control" type="email" name="userEmail" ng-model="userEmail" required>
+                            <span style="color:red" ng-show="myForm.userEmail.$dirty && myForm.userEmail.$invalid">
+                            <span ng-show="myForm.userEmail.$error.email">Adresse non valide</span>
+                            </span>
+                        </p>
+
+                        <p>Site(url) :<br>
+                            <input class="form-control" type="url" name="userWebSite" ng-model="userWebSite" required>
+                            <span style="color:red" ng-show="myForm.userWebSite.$dirty && myForm.userWebSite.$invalid">
+                            <span ng-show="myForm.userWebSite.$error.url">Url non valide</span>
+                            </span>
+                        </p>
 
                     </form>
 
@@ -58,12 +51,23 @@
                 <div ng-model="alertCreationUser" ></div>
 
                 <div>
-                    <ul class="list-group">
-                        <li class="list-group-item" ><p>Titre : </p><input type="text" class="form-control"  placeholder="Titre" ng-model="projectTitle"/></li>
-                        <li class="list-group-item" ><p>Description : </p><input type="text" class="form-control"  placeholder="Description" ng-model="projectDescription"/></li>
-                        <li class="list-group-item" ><p>Année de création : </p><input type="text" class="form-control"  placeholder="Année de création" ng-model="projectYear"/></li>
 
-                    </ul>
+                    <form name="myForm2">
+
+                        <p>Titre :<br>
+                            <input class="form-control" type="text" name="projectTitle" ng-model="projectTitle">
+                        </p>
+
+                        <p>Description :<br>
+                            <input class="form-control" type="text" name="projectDescription" ng-model="projectDescription">
+                        </p>
+
+                        <p>Année de création :<br>
+                            <input class="form-control" type="text" name="projectYear" ng-model="projectYear">
+                        </p>
+
+                    </form>
+
                     <button class="btn btn-success" href="" ng-click="creationProjet(projectTitle, projectDescription,projectYear)" ng-model="modification" style=" float: right">Ajouter</button>
 
                     <div ng-if="erreurProject == true">

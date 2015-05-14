@@ -28,7 +28,7 @@ angular.module('webIHMApp')
 
         $scope.supprimerSelected = false;
 
-
+        $scope.supprimerRoleSelected = '';
 
         /////////////////////// Redirection //////////////////////////
 
@@ -171,6 +171,13 @@ angular.module('webIHMApp')
             $scope.supprimerSelected = false;
         }
 
+        $scope.supprimerRoleSelect = function(id){
+            $scope.supprimerRoleSelected = id;
+        }
+
+        $scope.supprimerRoleUnSelect = function(){
+            $scope.supprimerRoleSelected = '';
+        }
 
 
 ////////////////////////////////// filter //////////////////////
@@ -321,6 +328,18 @@ angular.module('webIHMApp')
         }
 
 
+
+        $scope.supprimerRoleUser = function(id){
+
+            var success = function(){
+                $scope.rechercheProjectPourUser(id);
+            }
+
+            Suppression.suppressionRole(id,success);
+        }
+
+
+
 ///////////////////////////////////// Projects //////////////////////////////////
 
         /**
@@ -428,6 +447,16 @@ angular.module('webIHMApp')
             }
 
             Suppression.suppressionProject(id,success);
+        }
+
+
+        $scope.supprimerRoleProject = function(id){
+
+            var success = function(){
+                $scope.rechercheUserPourProject(id);
+            }
+
+            Suppression.suppressionRole(id,success);
         }
 
 

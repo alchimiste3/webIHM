@@ -31,6 +31,21 @@ angular.module('webIHMApp')
                 .error();
         }
 
+        this.suppressionRole = function(id, success){
+
+            $http.delete(mainUrl +'Roles/' +id)
+                .success(function(data) {
+                    console.log(data);
+                    console.log(data.data);
+                    success(data);
+
+
+                })
+                .error();
+        }
+
+
+
     }]
 
 );
