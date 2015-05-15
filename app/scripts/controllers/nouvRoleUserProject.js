@@ -23,6 +23,8 @@ angular.module('webIHMApp')
 
         $scope.param = $routeParams;
 
+        $scope.ajout = false;
+
 
         /////////////////////// Redirection //////////////////////////
 
@@ -37,7 +39,8 @@ angular.module('webIHMApp')
         $scope.ajouterRole = function(idUser,idProject, role){
 
             var success = function(){
-                console.log('ssqdczscfzeefc');
+                $scope.ajout = true;
+
             }
 
             Creation.creationRole(role, idUser, idProject, success)
@@ -57,6 +60,7 @@ angular.module('webIHMApp')
 
         $scope.ajouterSelect = function(id){
             $scope.ajouterSelected = id;
+            $scope.ajout = false;
         };
 
 

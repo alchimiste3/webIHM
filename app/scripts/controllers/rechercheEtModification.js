@@ -6,7 +6,7 @@ angular.module('webIHMApp')
 
         $scope.typeRechercheUser = ['id', 'name', 'surname'];
 
-        $scope.typeRechercheProjet = ['id', 'title'];
+        $scope.typeRechercheProjet = ['id', 'title', 'description'];
 
         $scope.typeRecherche = ['Utilisateur', 'Projet'];
 
@@ -42,16 +42,17 @@ angular.module('webIHMApp')
 
         var colorUserProjectLink = "blue";
 
+        $scope.styleUserAndProjectLink = {};
 
         var styleUserAndProjectLinkSelected = function(){
-            $scope.styleUserAndProjectLink = {};
-            $scope.styletitle = {"text-decoration" : "underline"};
+            $scope.styletitle = {"text-decoration" : "underline","text-align" : "center"};
         }
 
         var styleUserAndProjectLinkUnSelected = function(){
-            $scope.styleUserAndProjectLink = {"color" : colorUserProjectLink};
             $scope.styletitle = {"text-align" : "center"};
         }
+
+
 
 
         styleUserAndProjectLinkUnSelected();

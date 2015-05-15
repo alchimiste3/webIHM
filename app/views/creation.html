@@ -3,7 +3,6 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <h4>Création Utilisateur</h4>
-                <div ng-model="alertCreationUser" ></div>
 
                 <div>
                     <form name="myForm" novalidate>
@@ -32,12 +31,21 @@
 
                     </form>
 
+                    <div >
+                        <ul class="list-group">
+                            <li ng-if="ajouterUser == true" class="list-group-item">
+                                <span class="badge" style="font-size: 20px">{{nbUserAdd}}</span>
+                                <div  style="color: Green;font-size: 20px">Utilisateur ajouté</div>
+                            </li>
+                            <li ng-if="erreurUser == true" class="list-group-item">
+                                <span class="badge" style="font-size: 20px">{{nbUserErreur}}</span>
+                                <div style="color: Green;font-size: 20px">Erreur</div>
+                            </li>
+                        </ul>
+                    </div>
 
                     <button class="btn btn-success" href="" ng-click="creationUser(userName, userSurname,userEmail,userWebSite)" ng-model="modification" style="float: right">Ajouter</button>
 
-                    <div ng-if="erreurUser == true">
-                        <h3 style="color: red">Erreur</h3>
-                    </div>
 
                 </div>
             </div>
@@ -68,11 +76,24 @@
 
                     </form>
 
+                    <div >
+                        <ul class="list-group">
+                            <li ng-if="ajouterProject == true" class="list-group-item">
+                                <span class="badge" style="font-size: 20px">{{nbProjectAdd}}</span>
+                                <div  style="color: Green;font-size: 20px">Projet ajouté </div>
+                            </li>
+                            <li ng-if="erreurProject == true" class="list-group-item">
+                                <span class="badge" style="font-size: 20px">{{nbProjectErreur}}</span>
+                                <div style="color: Green;font-size: 20px">Erreur</div>
+                            </li>
+                        </ul>
+                    </div>
+
                     <button class="btn btn-success" href="" ng-click="creationProjet(projectTitle, projectDescription,projectYear)" ng-model="modification" style=" float: right">Ajouter</button>
 
-                    <div ng-if="erreurProject == true">
-                        <h3 style="color: red">Erreur</h3>
-                    </div>
+
+
+
                 </div>
             </div>
         </div>

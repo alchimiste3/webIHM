@@ -44,6 +44,11 @@
                             <div><h5 ng-style="styletitle">{{user.name}}, {{user.surname}} </h5></div>
                             <button ng-hide="ajouterSelected === '{{user.id}}'" class="btn btn-info" ng-click="ajouterSelect('{{user.id}}')" >Ajouter</button>
                             <div ng-show="ajouterSelected === '{{user.id}}'">
+
+                                <div ng-show="ajout == true">
+                                    <p style="color: Green;font-size: 17px">Ajouté</p>
+                                </div>
+
                                 <button class="btn btn-danger" ng-click="ajouterSelect('')" style="float: right">Annuler</button>
                                 <input type="text" ng-model="role" placeholder="role..."/>
                                 <button class="btn btn-info" ng-click="ajouterRole('{{user.id}}','{{param.id}}', role)">Ajouter</button>
