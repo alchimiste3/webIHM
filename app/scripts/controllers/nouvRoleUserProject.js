@@ -5,7 +5,7 @@ angular.module('webIHMApp')
 
         $scope.typeRechercheUser = ['id', 'name', 'surname'];
 
-        $scope.typeRechercheProjet = ['id', 'title'];
+        $scope.typeRechercheProjet = ['id', 'title', 'description'];
 
         $scope.typeRecherche = ['Utilisateur', 'Projet'];
 

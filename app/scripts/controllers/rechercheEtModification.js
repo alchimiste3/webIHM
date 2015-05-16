@@ -30,7 +30,10 @@ angular.module('webIHMApp')
 
         $scope.supprimerRoleSelected = '';
 
-        /////////////////////// Redirection //////////////////////////
+
+
+
+//////////////////////////// Redirection //////////////////////////
 
         $scope.go = function ( path ) {
             console.log(path);
@@ -40,14 +43,19 @@ angular.module('webIHMApp')
 
 ////////////////////////////// CSS ////////////////////////
 
-        var colorUserProjectLink = "blue";
 
         $scope.styleUserAndProjectLink = {};
 
+        /**
+         *
+         */
         var styleUserAndProjectLinkSelected = function(){
             $scope.styletitle = {"text-decoration" : "underline","text-align" : "center"};
         }
 
+        /**
+         *
+         */
         var styleUserAndProjectLinkUnSelected = function(){
             $scope.styletitle = {"text-align" : "center"};
         }
@@ -164,18 +172,31 @@ angular.module('webIHMApp')
             $scope.roles = '';
         }
 
+        /**
+         *
+         */
         $scope.supprimerSelect = function(){
             $scope.supprimerSelected = true;
         }
 
+        /**
+         *
+         */
         $scope.supprimerUnSelect = function(){
             $scope.supprimerSelected = false;
         }
 
+        /**
+         *
+         * @param id
+         */
         $scope.supprimerRoleSelect = function(id){
             $scope.supprimerRoleSelected = id;
         }
 
+        /**
+         *
+         */
         $scope.supprimerRoleUnSelect = function(){
             $scope.supprimerRoleSelected = '';
         }
@@ -196,7 +217,11 @@ angular.module('webIHMApp')
 //////////////////////////////// load /////////////////////
 
 
-
+        /**
+         * Initialise la liste des utilisateurs
+         *
+         * @param data
+         */
         var initUsers = function(data){
             $scope.users = data.data;
             $scope.currentUser = data.data;
@@ -204,6 +229,11 @@ angular.module('webIHMApp')
 
         Recherche.rechercheAllUsers(initUsers);
 
+        /**
+         * Initialise la liste de projets
+         *
+         * @param data
+         */
         var initProjects = function(data){
             $scope.projet = data.data;
             $scope.currentProject = data.data;
@@ -229,6 +259,7 @@ angular.module('webIHMApp')
         };
 
         /**
+         * Permet de rechercher tout les projets et roles en lien avec un utilisateur
          *
          * @param idUser
          */
@@ -251,6 +282,7 @@ angular.module('webIHMApp')
         };
 
         /**
+         * Recherche les role liee à l'id de l'utilisateur
          *
          * @param idUser
          * @param successCB
@@ -272,6 +304,7 @@ angular.module('webIHMApp')
         };
 
         /**
+         * Sauvegarde les modification sur un utilisateur et met à jour le page web
          *
          * @param userId
          * @param userName
@@ -299,6 +332,7 @@ angular.module('webIHMApp')
 
 
         /**
+         * Recherche un utilisateur avec un id : met à jour le filter
          *
          * @param index
          * @param id
@@ -312,6 +346,11 @@ angular.module('webIHMApp')
             Recherche.rechercheUsersById(id,success);
         };
 
+        /**
+         * Supprime un utilisateur a partire de son id et met à jour la page web
+         *
+         * @param id
+         */
         $scope.supprimerUser = function(id){
 
             var success = function (data){
@@ -329,7 +368,11 @@ angular.module('webIHMApp')
         }
 
 
-
+        /**
+         * Supprime un role a partire de l'id de l'utilisateur liee a se role
+         *
+         * @param id
+         */
         $scope.supprimerRoleUser = function(id){
 
             var success = function(){
@@ -357,6 +400,7 @@ angular.module('webIHMApp')
 
 
         /**
+         * recherche un projet avec son id : met à jour le filter
          *
          * @param index
          * @param id
@@ -373,6 +417,7 @@ angular.module('webIHMApp')
 
 
         /**
+         * Modifie un projet et met à jour la page web
          *
          * @param projectId
          * @param projectTitle
@@ -396,6 +441,7 @@ angular.module('webIHMApp')
         };
 
         /**
+         * recherche tout les utilisateur en lien avec ce projet
          *
          * @param idProject
          */
@@ -418,6 +464,7 @@ angular.module('webIHMApp')
         };
 
         /**
+         * Recherche tout le role liee a l'id du projet
          *
          * @param idProject
          * @param successCB
@@ -434,6 +481,11 @@ angular.module('webIHMApp')
 
         };
 
+        /**
+         * supprime un projet à partir d'un id
+         *
+         * @param id
+         */
         $scope.supprimerProject = function(id){
 
             var success = function (data){
@@ -451,6 +503,11 @@ angular.module('webIHMApp')
         }
 
 
+        /**
+         * Supprime un role à partir de l'id du projet liee à ce role
+         *
+         * @param id
+         */
         $scope.supprimerRoleProject = function(id){
 
             var success = function(){

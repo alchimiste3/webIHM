@@ -16,25 +16,23 @@
                  ng-switch on="selectedPane">
                 <div class="animate-switch" ng-switch-when="user">
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Rechercher un Utilisateur</div>
-                        <div class="panel-body">
-                            <div id="user" >
-                                <ul >
-                                    <li class="liSansPuce" ng-repeat="type in typeRechercheUser" >
-                                        <div class="col-lg-15">
-                                            <div class="input-group" ng-click="selectPane('user')">
-                                                <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
-                                                  <span class="input-group-btn">
-                                                    <button class="btn btn-default" type="button" ng-click="chercherUser('{{type}}',m)">Rechercher</button>
-                                                  </span>
-                                            </div>
+                    <div class="panel-body">
+                        <h4>Rechercher un Utilisateur</h4>
+                        <div id="user" >
+                            <ul class="list-unstyled">
+                                <li ng-repeat="type in typeRechercheUser" >
+                                    <div class="col-lg-15">
+                                        <p style="font-size: 17px;text-transform: capitalize;">{{type}} : </p>
+                                        <div class="input-group" ng-click="selectPane('user')">
+                                            <input type="text" class="form-control" placeholder="{{type}}" ng-model="m" >
+                                      <span class="input-group-btn">
+                                        <button class="btn btn-success" type="button" ng-click="chercherUser('{{type}}',m)">Rechercher</button>
+                                      </span>
                                         </div>
-                                        <br />
-                                    </li>
-                                </ul>
-
-                            </div>
+                                    </div>
+                                    <br />
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -59,26 +57,25 @@
                 </div>
 
                 <div class="animate-switch" ng-switch-when="project">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Rechercher un Projet</div>
-                        <div class="panel-body">
-                            <div id="projet">
-                                <ul >
-                                    <li class="liSansPuce" ng-repeat="type in typeRechercheProjet">
 
-                                        <div class="col-lg-15">
-                                            <div ng-click="selectPane('project')" class="input-group">
-                                                <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
-                                                  <span class="input-group-btn">
-                                                    <button class="btn btn-default" type="button" ng-click="chercherProject('{{type}}',m)">Rechercher</button>
-                                                  </span>
-                                            </div>
+                    <div class="panel-body">
+                        <h4>Rechercher un Projet</h4>
+                        <div id="projet">
+                            <ul class="list-unstyled">
+                                <li ng-repeat="type in typeRechercheProjet">
+
+                                    <div class="col-lg-15">
+                                        <p style="font-size: 17px;text-transform: capitalize;">{{type}} : </p>
+                                        <div ng-click="selectPane('project')" class="input-group">
+                                            <input type="text" class="form-control" placeholder="{{type}}" ng-model="m">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-success" type="button" ng-click="chercherProject('{{type}}',m)">Rechercher</button>
+                                  </span>
                                         </div>
-                                        <br />
-                                    </li>
-                                </ul>
-
-                            </div>
+                                    </div>
+                                    <br />
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
@@ -88,6 +85,11 @@
                             <div><h5 ng-style="styletitle"> {{proj.title}} </h5></div>
                             <button ng-hide="ajouterSelected === '{{proj.id}}'" class="btn btn-info" ng-click="ajouterSelect('{{proj.id}}')" >Ajouter</button>
                             <div ng-show="ajouterSelected === '{{proj.id}}'">
+
+                                <div ng-show="ajout == true">
+                                    <p style="color: Green;font-size: 17px">Ajouté</p>
+                                </div>
+
                                 <button class="btn btn-danger" ng-click="ajouterSelect('')" style="float: right">Annuler</button>
                                 <input type="text" ng-model="role" placeholder="role..."/>
                                 <button class="btn btn-info" ng-click="ajouterRole('{{param.id}}', '{{proj.id}}', role)">Ajouter</button>

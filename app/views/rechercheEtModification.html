@@ -156,7 +156,7 @@
 
                                 </div>
 
-                                <button ng-hide="supprimerSelected == true" class="btn btn-danger" ng-click="supprimerSelect()" style="float: right" ng-hide="modification === '{{user.id}}'">Supprimer Utilisateur</button>
+                                <button ng-hide="modification === '{{user.id}}'" ng-hide="supprimerSelected == true" class="btn btn-danger" ng-click="supprimerSelect()" style="float: right" ng-hide="modification === '{{user.id}}'">Supprimer Utilisateur</button>
 
                                 <div ng-if="supprimerSelected == true">
                                     <br />
@@ -259,7 +259,7 @@
 
                                 </div>
 
-                                <button ng-hide="supprimerSelected == true" class="btn btn-danger" ng-click="supprimerSelect()" style="float: right" ng-hide="modification === '{{user.id}}'">Supprimer Utilisateur</button>
+                                <button ng-hide="modification === '{{proj.id}}'" ng-hide="supprimerSelected == true" class="btn btn-danger" ng-click="supprimerSelect()" style="float: right" ng-hide="modification === '{{user.id}}'">Supprimer Utilisateur</button>
 
                                 <div ng-if="supprimerSelected == true">
                                     <br />
